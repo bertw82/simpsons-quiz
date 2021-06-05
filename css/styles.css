@@ -1,5 +1,7 @@
 /* base styles */
 
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,13 +10,18 @@
 
 body {
     color: #fff;
-    font-family: "Gotham Rounded A", "Gotham Rounded B", "Gotham Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Gloria Hallelujah', cursive, "Gotham Rounded A", "Gotham Rounded B", "Gotham Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #3659a2;
+    padding: 1em;
+  }
+
+  header {
+    text-align: center;
   }
   
-  img {
+  /* img {
     width: 400px;
-  }
+  } */
   
   main {
     width: 90%;
@@ -23,11 +30,13 @@ body {
   }
   
   h1 {
-    font-size: 3.75em;
+    font-size: 2.3rem;
+    margin-bottom: .5em;
   }
   
   h2 {
-    font-size: 2.25em;
+    font-size: 1.5em;
+    padding: .5em;
   }
   
   p {
@@ -35,10 +44,60 @@ body {
     line-height: 1.5;
   }
 
-  input {
-      display: block;
-      padding: 10px;
-      border-radius: 5px;
-      margin: 1em;
-      width: 100%;
+  .question {
+    padding-left: 3em;
+    display: flex;
+    align-items: center;
+    margin: .3em;
+    font-size: 1.2rem;
   }
+
+  .question label {
+    margin-left: .3em;
+  }
+
+  footer {
+    text-align: right;
+    padding: 1em;
+  }
+
+  .button-div {
+    margin-top: 1.5em;
+    text-align: center;
+  }
+  #submitBtn {
+    padding: 1em;
+    width: 200px;
+    border-radius: 10px;
+    background-color: white;
+    color: #3659a2;
+    font-size: 1.5rem;
+    transition: all .5s;
+  }
+
+  #submitBtn:hover {
+    letter-spacing: 3px;
+    background-color: lightblue;
+  }
+
+  .results {
+    background-color: yellow;
+    color: darkred;
+    padding: 2em;
+    display: inline-block;
+    border-radius: 5px;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+    main {
+      width: 80%;
+    }
+  }
+
+
