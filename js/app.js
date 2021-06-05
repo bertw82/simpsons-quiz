@@ -1,11 +1,13 @@
-
 let score = 0;
 let rank = '';
 
+// global variables
 const main = document.querySelector('main');
+const btnDiv = document.querySelector('.button-div');
+
 const quiz = [
     { 
-        question: 'Which character says "D\'oh"?',
+        question: 'Which character often says "D\'oh"?',
         choices: {
             a: 'Marge',
             b: 'Homer',
@@ -41,7 +43,7 @@ const quiz = [
         answer: 'c'
     },
     {
-        question: 'Which character is Principal of the elementary school?',
+        question: 'Which character is principal of the elementary school?',
         choices: {
             a: 'Ned Flanders',
             b: 'Seymour Skinner',
@@ -74,17 +76,19 @@ function generateQuestion(array, index) {
     main.insertAdjacentHTML('beforeend', quizQuestion);
 }
 
+// function createMainContent()
 // loop to generate questions html
 for (let i = 0; i < quiz.length; i++){
     generateQuestion(quiz[i], [i]);
 }
 
 // insert submit button
-const submitBtn = `
-<div class="button-div">
-    <button id="submitBtn">Submit</button>
-</div>`;
-main.insertAdjacentHTML('afterend', submitBtn);
+function createBtn() {
+    const submitBtn = `<button id="submitBtn">Submit</button>`;
+    btnDiv.innerHTML = submitBtn;
+}
+
+createBtn();
 
 // check answers
 function checkHelper(question, index) {
@@ -104,7 +108,6 @@ function checkAnswers() {
     const question2 = document.querySelectorAll('.question-2');
     const question3 = document.querySelectorAll('.question-3');
     const question4 = document.querySelectorAll('.question-4');
-    const btnDiv = document.querySelector('.button-div');
     checkHelper(question0, 0);
     checkHelper(question1, 1);
     checkHelper(question2, 2);
@@ -114,34 +117,45 @@ function checkAnswers() {
         rank = 'excellent';  
         btnDiv.innerHTML = `<div class="results">
                             <p>You got ${score} answers correct</p>
-                            <p>You have ${rank} knowledge of the Simpsons</p>
+                            <p>You have an ${rank} knowledge of the Simpsons</p>
                             </div>
                             `;
-     } else if ( score >= 3 ) {
-       rank = 'good'; 
+     } else if ( score === 4 ) {
+       rank = 'great'; 
        btnDiv.innerHTML = `<div class="results">
        <p>You got ${score} answers correct</p>
-       <p>You have ${rank} knowledge of the Simpsons</p>
+       <p>You have a ${rank} knowledge of the Simpsons</p>
        </div>
        `;
-     } else if ( score >= 1 ) {
-        rank = 'average'; 
+     } else if ( score >= 2 ) {
+        rank = 'cromulent'; 
         btnDiv.innerHTML = `<div class="results">
         <p>You got ${score} answers correct</p>
-        <p>You have ${rank} knowledge of the Simpsons</p>
+        <p>You have a ${rank} knowledge of the Simpsons</p>
         </div>
         `;
      } else {
        rank = 'poor';    
        btnDiv.innerHTML = `<div class="results">
        <p>You got ${score} answers correct</p>
-       <p>You have ${rank} knowledge of the Simpsons. Watch more episodes!</p>
+       <p>You have a ${rank} knowledge of the Simpsons. Watch more episodes!</p>
        </div>
        `;
      }
+    const resetBtn = `
+                        <button id="resetBtn">Reset Game</button>
+                      `;
+    btnDiv.insertAdjacentHTML('beforeend', resetBtn); 
 }
 
-document.querySelector('#submitBtn').addEventListener('click', () => {
-    checkAnswers();   
-});
-
+btnDiv.addEventListener('click', event => {
+    if (event.target.id === 'submitBtn'){
+        checkAnswers(); 
+    } else if (event.target.id === 'resetBtn') {
+        const radioBtns = document.querySelectorAll('.question input');
+        console.log(radioBtns);
+        radioBtns.forEach(btn => btn.checked = false);
+        score = 0;
+        createBtn();
+    }
+})

@@ -53,21 +53,25 @@ body {
   }
 
   .question label {
-    margin-left: .3em;
+    margin-left: .5em;
+  }
+
+  input {
+    cursor: pointer;
   }
 
   footer {
     text-align: right;
-    padding: 1em;
+    padding-top: 3em;
   }
 
   .button-div {
-    margin-top: 1.5em;
+    margin-top: 3em;
     text-align: center;
   }
-  #submitBtn {
+  button {
     padding: 1em;
-    width: 200px;
+    width: 250px;
     border-radius: 10px;
     background-color: white;
     color: #3659a2;
@@ -75,17 +79,22 @@ body {
     transition: all .5s;
   }
 
-  #submitBtn:hover {
+  button:hover {
     letter-spacing: 3px;
-    background-color: lightblue;
+    background-color: rgb(198, 232, 243);
   }
 
   .results {
     background-color: yellow;
     color: darkred;
     padding: 2em;
-    display: inline-block;
+    max-width: 800px;
     border-radius: 5px;
+    margin: 0 auto;
+  }
+
+  #resetBtn {
+    margin-top: 1em;
   }
 
   @media (min-width: 768px) {
@@ -97,6 +106,12 @@ body {
     }
     main {
       width: 80%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    main {
+      width: 50%;
     }
   }
 
