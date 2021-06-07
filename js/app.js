@@ -59,15 +59,15 @@ function generateQuestion(array, index) {
     const quizQuestion = `
         <div>
             <h2>${num}. ${array.question}</h2>
-            <div class="question">
+            <div class="question container">
                 <input type="radio" name="question-${num}" class="question-${index}" value="a">
                 <label>${array.choices.a}<label>
             </div>
-            <div class="question">
+            <div class="question container">
                 <input type="radio" name="question-${num}" class="question-${index}" value="b">
                 <label>${array.choices.b}</label>
             </div>
-            <div class="question">
+            <div class="question container">
                 <input type="radio" name="question-${num}" class="question-${index}" value="c">
                 <label>${array.choices.c}</label>
             </div> 
